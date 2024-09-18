@@ -1,0 +1,35 @@
+
+
+    <h2>Pedidos Pendientes</h2>
+    <ul>
+@for (order of orders; track $index) {
+
+  <li>
+    Número: {{ order.number }} - {{ order.name }} 
+    <button (click)="startCooking(order)">Cocinar</button>
+  </li>
+
+}
+
+
+    </ul>
+    <p *ngIf="orders.length === 0">No hay pedidos pendientes.</p>
+
+
+  @if(cookingOrder){
+    <div>
+      <h2>Pedido en Cocción</h2>
+      <p>Número: {{ cookingOrder.number}}</p>
+      <p>Nombre: {{ cookingOrder.name }}</p>
+      <p>Descripción: {{ cookingOrder.description }}</p>
+      <p>Fecha: {{ cookingOrder.date | date }}</p>
+      <button (click)="finishCooking()">Terminar Cocción</button>
+    </div>
+    
+  }
+  
+
+
+
+
+  

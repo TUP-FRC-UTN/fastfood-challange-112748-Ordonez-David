@@ -1,0 +1,33 @@
+<form #form="ngForm" (ngSubmit)="sendForm(form)" class="row g-3 container">
+    <h3>Pedir orden</h3>
+    <div class="col-md-4">
+        <label for="validationCustom01" class="form-label">Nombre:</label>
+        <input #name="ngModel"
+            [ngClass]="{'is-invalid': name.invalid  && (name.dirty || name.touched),'is-valid': name.valid }"
+            type="text" class="form-control" name="nombre" [(ngModel)]="order.name" required minlength="5">
+        @if(name.invalid  && (name.dirty || name.touched)){
+        @if(name.getError('minlength')) {
+        <div class="text-danger">El nombre es obligatorio</div>
+        }@else{
+        <div class="text-danger">Debe contener como minimo 5 caracteres.</div>
+        }}
+    </div>
+
+    <div class="col-md-4">
+        <label for="validationCustom01" class="form-label">Pedido:</label>
+        <input #description="ngModel"
+            [ngClass]="{'is-invalid': description.invalid  && (description.dirty || description.touched),'is-valid': description.valid }"
+            type="text" class="form-control" name="descripción" [(ngModel)]="order.description" required minlength="5">
+        @if(name.invalid  && (description.dirty || description.touched)){
+        @if(name.getError('minlength')) {
+        <div class="text-danger">La descripción del pedido es obligatoria</div>
+        }@else{
+        <div class="text-danger">Debe contener como minimo 5 caracteres.</div>
+        }}
+    </div> 
+    <hr>
+  
+    <div>
+        <button type="submit" class="btn btn-primary">Ordenar</button>
+    </div>
+</form>

@@ -1,0 +1,13 @@
+<div *ngIf="orders.length > 0; else noOrders">
+    <h2>Pedidos Realizados</h2>
+    <ul>
+      <li *ngFor="let order of orders">
+        Número: {{ order.number }}, Nombre: {{ order.name }}, Fecha: {{ order.date | date }}
+      </li>
+    </ul>
+  </div>
+  
+  <ng-template #noOrders>
+    <p>No hay pedidos realizados.</p>
+  </ng-template>
+  
