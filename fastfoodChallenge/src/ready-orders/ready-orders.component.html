@@ -1,1 +1,13 @@
-<p>ready-orders works!</p>
+<div *ngIf="ordersReady.length > 0; else noOrders">
+    <h2>Pedidos Listos para entregar</h2>
+    <ul>
+      <li *ngFor="let order of ordersReady">
+        Número: {{ order.number }}, Nombre: {{ order.name }}, Fecha: {{ order.date | date }}
+      </li>
+    </ul>
+  </div>
+  
+  <ng-template #noOrders>
+    <p>No hay pedidos listos para entregar.</p>
+  </ng-template>
+  
