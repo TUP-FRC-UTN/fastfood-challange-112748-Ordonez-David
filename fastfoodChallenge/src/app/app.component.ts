@@ -5,11 +5,12 @@ import { Order } from './order';
 import { OrderService } from '../order.service';
 import { OrdersEnteredComponent } from "../orders-entered/orders-entered.component";
 import { KitchenComponent } from "../kitchen/kitchen.component";
+import { ReadyOrdersComponent } from "../ready-orders/ready-orders.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, PointOfSellComponent, PointOfSellComponent, OrdersEnteredComponent, KitchenComponent],
+  imports: [RouterOutlet, PointOfSellComponent, PointOfSellComponent, OrdersEnteredComponent, KitchenComponent, ReadyOrdersComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -18,6 +19,8 @@ export class AppComponent {
 
   orders: Order[] = []; // Lista para almacenar las órdenes
  
+  readyOrders: Order[] = [];
+
   constructor(private orderService: OrderService) {}
 
   ngOnInit() {
@@ -31,6 +34,12 @@ export class AppComponent {
     console.log('Llega la orden al padre', order);
 
     console.log("Ordenes", this.orders)
+  }
+
+
+  handleReadyOrder(order: Order){
+    this.readyOrders.push(order);
+    alert("TEST");
   }
 
 }

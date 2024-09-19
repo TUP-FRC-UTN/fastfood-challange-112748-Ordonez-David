@@ -3,4 +3,6 @@
 
 <app-orders-entered [orders]="orders"> </app-orders-entered>
 
-<app-kitchen [orders]="orders"></app-kitchen>
+<app-kitchen [orders]="orders" (readyOder)="handleReadyOrder($event)"></app-kitchen>
+
+<app-ready-orders></app-ready-orders>
